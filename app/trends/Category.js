@@ -22,20 +22,13 @@ export class CategoryService {
 
     async getRandomTrendProducts(trends) {
         // TODO asignar un rango aleatorio del 0 al 49
-        const slicedTrends = trends.slice(0, 9);
+        const slicedTrends = trends.slice(0, 10);
         const products = await Promise.all(
             slicedTrends.map(trend => this.seachByName(trend.keyword))
         );
-        return await products.json();
+        return await products;
     }
 
 }
 
-const data = new CategoryService();
 
-data.getTrendsByCategory().then(trends => {
-    data.trends = trends
-    console.log(data.trends)
-    data.seachByName(data.trends[0].keyword)
-        .then(product => data.getRandomTrendProducts(data.trends)).then(console.log)
-});
