@@ -1,15 +1,14 @@
-import { CategoryService } from "../trends/Category.js";
-
+import { CategoryService } from "../models/Category.js";
 const carousel = document.getElementById('carousel');
 const features = document.getElementById('features');
-
 const data = new CategoryService();
-
 const setIndexPage = async (data) => {
     data.trends = await data.getTrendsByCategory();
     const categories = await data.getRandomTrendProducts(data.trends);
     for (let i = 0; i <= 2; i++) {
-        setCarouselData(categories[i].results[0], carousel)
+        const product = categories[i].results[0]
+        i === 0 ? setCarouselData(product, carousel, true) :
+            setCarouselData(product, carousel)
     }
     for (let i = 3; i <= 6; i++) {
         setHeadingData(categories[i].results[0], features)
@@ -20,7 +19,7 @@ const setIndexPage = async (data) => {
 }
 setIndexPage(data);
 
-const setCarouselData = (product, element) => {
+const setCarouselData = (product, element, firstItem = false) => {
     element.innerHTML +=
         `
     <div class="carousel-item" id="${product.id}">
@@ -29,20 +28,16 @@ const setCarouselData = (product, element) => {
     <div class="container">
       <div class="carousel-caption text-start">
         <h1 class="text-info">${product.title}</h1>
-        <p class="text-success">${product.condition}</p>
+        <p class="text-success">$${product.price}</p>
         <p><a class="btn btn-lg btn-primary" href="${product.permalink}">Ver más</a></p>
       </div>
     </div>
     </div>
     `
     const prodElement = document.getElementById(product.id);
-    // TODO condición dinámica
-    if (product.id === 'MLM929870216') {
+    if (firstItem)
         prodElement.classList.add('active');
-    }
 }
-
-
 const setHeadingData = (product, element) => {
     element.innerHTML +=
         `
@@ -55,8 +50,6 @@ const setHeadingData = (product, element) => {
     </div>
     `
 }
-
-
 const setFeaturetteData = (product, element) => {
     element.innerHTML +=
         `
