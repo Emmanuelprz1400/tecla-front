@@ -8,13 +8,13 @@ const setIndexPage = async (data) => {
     for (let i = 0; i <= 2; i++) {
         const product = categories[i].results[0]
         i === 0 ? setCarouselData(product, carousel, true) :
-            setCarouselData(product, carousel)
+            setCarouselData(product, carousel);
     }
     for (let i = 3; i <= 6; i++) {
-        setHeadingData(categories[i].results[0], features)
+        setHeadingData(categories[i].results[0], features);
     }
     for (let i = 7; i <= 9; i++) {
-        setFeaturetteData(categories[i].results[0], features)
+        setFeaturetteData(categories[i].results[0], features);
     }
 }
 setIndexPage(data);
@@ -33,7 +33,7 @@ const setCarouselData = (product, element, firstItem = false) => {
       </div>
     </div>
     </div>
-    `
+    `;
     const prodElement = document.getElementById(product.id);
     if (firstItem)
         prodElement.classList.add('active');
@@ -48,7 +48,7 @@ const setHeadingData = (product, element) => {
         <p>$${product.price}</p>
         <p><a class="btn btn-secondary" href="${product.permalink}">Ver detalles &raquo;</a></p>
     </div>
-    `
+    `;
 }
 const setFeaturetteData = (product, element) => {
     element.innerHTML +=
@@ -67,6 +67,6 @@ const setFeaturetteData = (product, element) => {
 
       </div>
     </div>
-    `
+    `;
 }
 

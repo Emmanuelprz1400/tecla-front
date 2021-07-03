@@ -1,6 +1,6 @@
 const baseUrl = 'https://api.mercadolibre.com';
 
-export const SITE_ID = 'MLM'
+export const SITE_ID = 'MLM';
 
 export const CATEGORY_ID = 'MLM1648';
 
