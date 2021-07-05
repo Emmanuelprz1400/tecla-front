@@ -2,14 +2,21 @@ import {
     CATEGORY_ID,
     SITE_ID,
     trendsUrl,
-    searchByNameUrl
+    searchByNameUrl,
+    getCategoriesUrl
 } from "../globals/apiPaths.js";
 
 export class CategoryService {
     trends;
+    categories;
     async getTrendsByCategory() {
         const trends = await fetch(trendsUrl(SITE_ID, CATEGORY_ID));
         return await trends.json();
+    }
+
+    async getCategories() {
+        const categories = await fetch(getCategoriesUrl(SITE_ID));
+        return await categories.json();
     }
 
     async seachByName(name) {

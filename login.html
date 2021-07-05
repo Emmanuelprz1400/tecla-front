@@ -41,10 +41,21 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="register.html">Registro</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle show" href="#" id="navbarDropdown2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="true">
+                                Categorías
+                            </a>
+                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown2" data-bs-popper="none"
+                                id="categories">
+                            </ul>
+                        </li>
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <a href="search.html">
+                            <button class="btn btn-outline-success" type="button">Search</button>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -70,6 +81,9 @@
     </div>
 
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- APP -->
+    <script type="module" src="./app/controllers/navbar.js"></script>
 
 </body>
 
