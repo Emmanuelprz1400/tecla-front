@@ -1,11 +1,15 @@
-const baseUrl = 'https://api.mercadolibre.com';
+const baseUrl = 'http://localhost:3000/api';
 
-export const SITE_ID = 'MLM';
+export const productsApi = () => `${baseUrl}/products`;
 
-export const CATEGORY_ID = 'MLM1648';
+export const categoriesApi = () => `${productsApi()}/categories`;
 
-export const trendsUrl = (SITE_ID, CATEGORY_ID) => `${baseUrl}/trends/${SITE_ID}/${CATEGORY_ID}`;
+export const allCategoriesApi = () => `${categoriesApi()}/all`;
 
-export const searchByNameUrl = (SITE_ID, NAME) => `${baseUrl}/sites/${SITE_ID}/search?q=${NAME}`;
+export const searchProducts = () => `${productsApi()}/search`;
 
-export const getCategoriesUrl = (SITE_ID) => `${baseUrl}/sites/${SITE_ID}/categories`;
+export const usersApi = () => `${baseUrl}/users`;
+
+export const authApi = () => `${baseUrl}/auth`;
+
+export const purchasesApi = () => `${baseUrl}/purchases`;

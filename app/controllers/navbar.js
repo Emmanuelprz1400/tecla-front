@@ -1,20 +1,21 @@
-import { CategoryService } from "../models/Category.js";
+import { ProductsService } from "../services/Products.js";
 const categories = document.getElementById('categories');
-const data = new CategoryService();
-const setCategoriesList = async (data) => {
-    data.categories = await data.getCategories();
-    for (let i = 0; i <= 5; i++) {
-        i <= 5 ? setCategories(data.categories[i]) :
-            setCategories(data.categories[i], true);
-    }
-}
-setCategoriesList(data);
+const productsService = new ProductsService();
 
-const setCategories = (category, lastItem = false) => {
+const setCategoriesList = async () => {
+    let {categories} = await productsService.getCategories();
+    console.log(categories);
+    categories.forEach((item, index) => {
+        setCategories(item);
+    });
+}
+setCategoriesList();
+
+const setCategories = (category) => {
     categories.innerHTML +=
         `
-        <li><a class="dropdown-item" href="#" id="${category.id}">${category.name}</a></li>
-        ${!lastItem ? '<li><hr class="dropdown-divider"></li>' : ''}
-    `;
+        <li><a class="dropdown-item" href="#" id="${category.id}">${category.description_}</a></li>
+        <li><hr class="dropdown-divider"></li>
+        `;
 }
 

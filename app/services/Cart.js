@@ -1,4 +1,4 @@
-class Cart {
+class CartService {
     constructor(key) { //Declaración de clase
         this.key = key || "products";
         this.products = this.getProduct();
