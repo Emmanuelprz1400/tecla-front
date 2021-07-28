@@ -16,6 +16,6 @@ const setCategories = (category) => {
         `
         <li><a class="dropdown-item" href="#" id="${category.id}">${category.description_}</a></li>
         <li><hr class="dropdown-divider"></li>
-        `;
+        `
 }
 
